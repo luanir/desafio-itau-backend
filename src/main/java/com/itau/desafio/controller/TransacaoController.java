@@ -2,6 +2,7 @@ package com.itau.desafio.controller;
 
 import com.itau.desafio.model.Transacao;
 import com.itau.desafio.service.TransacaoService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,8 @@ public class TransacaoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> criar (@RequestBody Transacao transacao){
+	public ResponseEntity<Void> criar (@Valid @RequestBody Transacao transacao){
+		
 		if (transacao.getValor() == null || transacao.getDataHora() == null) {
 			return ResponseEntity.badRequest().build();
 		}
@@ -28,6 +30,7 @@ public class TransacaoController {
 			return ResponseEntity.unprocessableEntity().build();
 		}
 		
+		// regra de negócio: não pode ser futura
 		if (transacao.getDataHora().isAfter(OffsetDateTime.now())) {
 			return ResponseEntity.unprocessableEntity().build();
 		}

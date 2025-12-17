@@ -1,10 +1,17 @@
 package com.itau.desafio.model;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+
 import java.time.OffsetDateTime;
 
 public class Transacao {
 	
+	@NotNull
+	@PositiveOrZero
 	private Double valor;
+	
+	@NotNull
 	private OffsetDateTime dataHora;
 	
 	public Double getValor() {
