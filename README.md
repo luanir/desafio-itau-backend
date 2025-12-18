@@ -73,8 +73,8 @@ Recebe uma transação financeira.
 
 ```json
 {
-  "valor": 123.45,
-  "dataHora": "2025-12-17T10:00:00-03:00"
+  "valor": 100.0,
+  "dataHora": "2025-12-18T11:51:20Z"
 }
 ```
 
