@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/estatistica")
 public class EstatisticaController {
-	
-	private final EstatisticaService service;
-	
-	public EstatisticaController(EstatisticaService service) {
-		this.service = service;
-	}
-	
-	@GetMapping
-	public Estatistica buscar() {
-		return service.calcular();
-	}
+
+    private final EstatisticaService service;
+
+    public EstatisticaController(EstatisticaService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+    public Estatistica buscar() {
+        return service.calcular();
+    }
 }
