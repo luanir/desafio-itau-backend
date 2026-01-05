@@ -1,32 +1,31 @@
-# Desafio Itaú Backend
+Desafio Itaú Backend
+📌 Descrição
 
-## 📌 Descrição
+Este projeto foi desenvolvido como solução para o Desafio de Programação Backend do Itaú Unibanco.
 
-Este projeto foi desenvolvido como solução para o **Desafio de Programação Backend do Itaú Unibanco**.
+O objetivo é construir uma API REST capaz de:
 
-O objetivo é construir uma **API REST** capaz de:
+Receber transações financeiras
 
-* Receber transações financeiras
-* Armazenar os dados **em memória**
-* Calcular estatísticas das transações ocorridas nos **últimos 60 segundos**
+Armazenar os dados em memória
 
-O projeto foi desenvolvido utilizando **Java + Spring Boot**, seguindo rigorosamente os requisitos propostos no desafio.
+Calcular estatísticas das transações ocorridas nos últimos 60 segundos
 
----
+O projeto foi desenvolvido utilizando Java + Spring Boot, seguindo rigorosamente os requisitos propostos no desafio.
 
-## 🛠️ Tecnologias Utilizadas
+🛠️ Tecnologias Utilizadas
 
-* Java 21
-* Spring Boot
-* Spring Web
-* Spring Validation
-* Maven
+Java 21
 
----
+Spring Boot
 
-## 📂 Estrutura do Projeto
+Spring Web
 
-```
+Spring Validation
+
+Maven
+
+📂 Estrutura do Projeto
 src/main/java/com/itau/desafio
  ├── controller
  │   ├── TransacaoController.java
@@ -38,77 +37,75 @@ src/main/java/com/itau/desafio
  │   ├── Transacao.java
  │   └── Estatistica.java
  └── DesafioItauApplication.java
-```
 
----
+▶️ Como Executar o Projeto
+Pré-requisitos
 
-## ▶️ Como Executar o Projeto
+Java 21 instalado
 
-### Pré-requisitos
+Maven instalado
 
-* Java 21 instalado
-* Maven instalado
-
-### Executando a aplicação
-
-```bash
+Executando a aplicação
 mvn spring-boot:run
-```
+
 
 A aplicação estará disponível em:
 
-```
 http://localhost:8080
-```
 
----
-
-## 🔗 Endpoints Disponíveis
-
-### ➕ POST /transacao
+🔗 Endpoints Disponíveis
+➕ POST /transacao
 
 Recebe uma transação financeira.
 
-**Request Body**
+Request Body
 
-```json
 {
   "valor": 100.0,
   "dataHora": "2025-12-18T11:51:20Z"
 }
-```
 
-**Regras de Validação**
 
-* `valor` deve ser maior ou igual a 0
-* `dataHora` não pode estar no futuro
-* Campos obrigatórios devem estar preenchidos
+Observação sobre data e hora
 
-**Respostas**
+O sufixo Z indica que a data e hora estão em UTC (fuso 0 – Zulu Time).
 
-* `201 Created` → Transação aceita
-* `400 Bad Request` → Requisição inválida
-* `422 Unprocessable Entity` → Regra de negócio violada
+Caso seja utilizado o horário de Brasília (UTC-3), é necessário somar 3 horas ao horário local antes de enviar.
 
----
+Para outros estados ou países, deve-se ajustar o horário conforme o fuso, somando ou subtraindo horas em relação ao UTC.
 
-### 🗑️ DELETE /transacao
+Todas as datas devem ser enviadas obrigatoriamente em UTC com Z.
+
+Regras de Validação
+
+valor deve ser maior ou igual a 0
+
+dataHora não pode estar no futuro
+
+Campos obrigatórios devem estar preenchidos
+
+Respostas
+
+201 Created → Transação aceita
+
+400 Bad Request → Requisição inválida
+
+422 Unprocessable Entity → Regra de negócio violada
+
+🗑️ DELETE /transacao
 
 Remove todas as transações armazenadas em memória.
 
-**Resposta**
+Resposta
 
-* `200 OK`
+200 OK
 
----
+📊 GET /estatistica
 
-### 📊 GET /estatistica
+Retorna estatísticas das transações ocorridas nos últimos 60 segundos.
 
-Retorna estatísticas das transações ocorridas nos **últimos 60 segundos**.
+Response Body
 
-**Response Body**
-
-```json
 {
   "count": 10,
   "sum": 1234.56,
@@ -116,35 +113,35 @@ Retorna estatísticas das transações ocorridas nos **últimos 60 segundos**.
   "min": 12.34,
   "max": 123.56
 }
-```
 
-**Observação**
 
-* Caso não existam transações no período, todos os valores retornam `0`.
+Observação
 
----
+Caso não existam transações no período, todos os valores retornam 0.
 
-## ⚠️ Regras Importantes do Desafio
+⚠️ Regras Importantes do Desafio
 
-* Não utiliza banco de dados
-* Dados armazenados exclusivamente em memória
-* API aceita e retorna apenas JSON
-* Endpoints seguem exatamente o padrão solicitado
+Não utiliza banco de dados
 
----
+Dados armazenados exclusivamente em memória
 
-## 🚀 Considerações Finais
+API aceita e retorna apenas JSON
+
+Endpoints seguem exatamente o padrão solicitado
+
+🚀 Considerações Finais
 
 Este projeto foi desenvolvido com foco em:
 
-* Clareza de código
-* Organização da aplicação
-* Boas práticas REST
-* Conformidade total com o desafio proposto
+Clareza de código
+
+Organização da aplicação
+
+Boas práticas REST
+
+Conformidade total com o desafio proposto
 
 Sinta-se à vontade para avaliar, testar e sugerir melhorias.
 
----
-
-👤 **Autor**
+👤 Autor
 Projeto desenvolvido para fins de avaliação técnica.
